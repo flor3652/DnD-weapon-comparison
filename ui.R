@@ -30,8 +30,6 @@ shinyUI(pageWithSidebar(
     
     h3(textOutput("Plot of Comparative Weapon Efficiencies")),
     
-    plotOutput("plot"),
-    
-    plotOutput("testplot") #runs locally
+    plotOutput("plot")
   )  
 ))

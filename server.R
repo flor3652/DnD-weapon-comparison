@@ -29,10 +29,6 @@ shinyServer(function(input, output){
     legend("topright",c("Weapon 1 Efficiency","Weapon 2 Efficiency"), cex=0.8, col=c("blue","red"), pch=21:22, lty=1:2)
   })
   
-  output$testplot <- renderPlot({
-    source("Weapon Kill %.R")
-  })
-  
 #   output$table <- renderTable({
 #     data.frame(x=data())
 #   })
