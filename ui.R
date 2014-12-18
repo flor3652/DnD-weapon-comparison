@@ -5,7 +5,7 @@ library(shiny)
 
 shinyUI(pageWithSidebar(
   
-  headerPanel("Trial D & D Weapon App Using Shiny"),
+  headerPanel("D & D Weapon App Using Shiny (Merry Christmas)"),
   
   sidebarPanel(
     
@@ -14,6 +14,8 @@ shinyUI(pageWithSidebar(
     
     sliderInput("w1h", "First Weapon's Hit Modifier:",
                 min=-10, max=10, value=0),
+    
+    br(),br(), #for spacing
     
     sliderInput("w2d", "Second Weapon's Low and High Damage Ratings:",
                 min=1, max=15, value=c(2,6)),
