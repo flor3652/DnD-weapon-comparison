@@ -26,7 +26,7 @@ shinyServer(function(input, output){
     wp2eff <- data()$w2e
     
     plot(wp1eff, type="o", col="blue", xlab="Enemy Armor Rating", ylab="Efficiency (Damage per Turn)",col.lab=rgb(0,0.5,0)); lines(wp2eff, type="o", pch=22, lty=2, col="red")
-    legend(10,(max(wp1eff)),c("Weapon 1 Efficiency","Weapon 2 Efficiency"), cex=0.8, col=c("blue","red"), pch=21:22, lty=1:2)
+    legend("topright",c("Weapon 1 Efficiency","Weapon 2 Efficiency"), cex=0.8, col=c("blue","red"), pch=21:22, lty=1:2)
   })
   
 #   output$table <- renderTable({

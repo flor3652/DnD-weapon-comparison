@@ -20,8 +20,10 @@ ea  <- 1:20    #Possible enemy armor ratings
 wp1eff <- h1*((21/20)-(ea/20))  #Weapon 1 efficiency
 wp2eff <- h2*((21/20)-(ea/20) + (c/20))  #Weapon 2 efficiency
 frame()  #Clear earlier graphs
+
 plot(wp1eff, type="o", col="blue", xlab="Enemy Armor Rating", ylab="Efficiency (Damage per Turn)",col.lab=rgb(0,0.5,0)); lines(wp2eff, type="o", pch=22, lty=2, col="red")
-legend(10,(max(wp1eff)),c("Weapon 1 Efficiency","Weapon 2 Efficiency"), cex=0.8, col=c("blue","red"), pch=21:22, lty=1:2)
+
+legend("topright",c("Weapon 1 Efficiency","Weapon 2 Efficiency"), cex=0.8, col=c("blue","red"), pch=21:22, lty=1:2)
 #axis(1, at=2*0:10,)  #Add ticks on every one on the x axis
 #axis(2, at=0:10)  #Add ticks on every one on the y axis
 grid()
