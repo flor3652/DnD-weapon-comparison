@@ -56,3 +56,33 @@ legend("topright",c("Weapon 1 Efficiency","Weapon 2 Efficiency"), cex=0.8, col=c
 grid()
 
 
+
+#### Making this a function that can be read and invoked in the app ----
+# note: probably remove the "initial values" when using with app
+calcEff <- function(hr1=c(2,8), hr2=c(3,6), am1=0, am2=0, ea=c(1,20)){
+  h1  <- mean(hr1)
+  h2  <- mean(hr2)
+  ea <- ea[1]:ea[2] #setting ea to the list of first to last element
+  
+  #following effects assume ties go to attacker (change 21 -> 20 if the go to defender)
+  wp1eff <- h1*(sapply((21-ea+am1)/20, function(x) min(1,x)))  
+  wp2eff <- h2*(sapply((21-ea+am2)/20, function(x) min(1,x))) 
+  list(wp1eff,wp2eff)
+}
+
+calcEff()
+
+
+plotEff <- function(wp1eff=c(),wp2eff=c()){
+  frame()  #Clear earlier graphs
+  
+  plot(wp1eff, type="o",pch=21, col="blue", xlab="Enemy Armor Rating", ylab="Efficiency (Average Damage per Turn)",col.lab=rgb(0,0.5,0), ylim=c(min(wp1eff,wp2eff),max(wp1eff,wp2eff))); lines(wp2eff, type="o", pch=22, lty=2, col="red")
+  
+  legend("topright",c("Weapon 1 Efficiency","Weapon 2 Efficiency"), cex=0.8, col=c("blue","red"), pch=21:22, lty=1:2)
+  #axis(1, at=2*0:10,)  #Add ticks on every one on the x axis
+  #axis(2, at=0:10)  #Add ticks on every one on the y axis
+  grid()
+}
+
+plotEff(calcEff()[[1]],calcEff()[[2]])
+
