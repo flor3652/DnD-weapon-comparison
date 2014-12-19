@@ -34,3 +34,11 @@ shinyServer(function(input, output){
 #   })
   
 })
+
+
+
+
+
+#### update ideas ---
+# create a function for calculations (so that they can be edited more conveniently)
+# give users the option of where to place the legend (top right, top left, bottom right, bottom left)
