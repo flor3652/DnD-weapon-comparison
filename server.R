@@ -22,6 +22,7 @@ shinyServer(function(input, output){
   #Make the output plot
   
   output$plot <- renderPlot({
+    #note that these aren't "needed", just used for convenience when copying over old plot code
     wp1eff <- data()$w1e
     wp2eff <- data()$w2e
     
