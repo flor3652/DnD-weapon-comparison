@@ -21,7 +21,31 @@ shinyUI(pageWithSidebar(
                 min=1, max=15, value=c(2,6)),
     
     sliderInput("w2h", "Second Weapon's Hit Modifier:",
-                min=-10, max=10, value=0)
+                min=-10, max=10, value=0),
+    
+    br(),br(),
+    
+    checkboxInput("changeEA", "I wish to change the enemy armor range.",FALSE),
+    
+    conditionalPanel(
+      condition = "input.changeEA == true",
+      numericInput("eaMin", "New Minimum Enemy Armor:",1),
+      numericInput("eaMax", "New Maximum Enemy Armor:",20)
+    ),
+    
+    br(),br(),
+    
+    checkboxInput("changeLegLoc", "I wish to change the legend location.", FALSE),
+    
+    conditionalPanel(
+      condition = "input.changeLegLoc == true",
+      selectInput("legLoc", 
+                  "Location of The Legend",
+                  list("Top Right"="topright",
+                       "Top Left"="topleft",
+                       "Bottom Right"="bottomright",
+                       "Bottom Left"="bottomleft"))
+    )
     
   ),
   
