@@ -42,13 +42,13 @@ h1  <- mean(h1r)  #Average damage per hit of weapon 1
 h2  <- mean(h2r)  #Average damage per hit of weapon 2
 ea  <- 1:20    #Possible enemy armor ratings
 
-#note that the following efficiencies assume that a tie goes to the attacker. To give it to the defender, change the 21 to 20 below. These calculations take the average damage and multiply by the probability of a hit (in parenthesis).
-wp1eff <- h1*((21-ea+am1)/20)  #Weapon 1 efficiency
-wp2eff <- h2*((21-ea+am2)/20)  #Weapon 2 efficiency
+#note that the following efficiencies assume that a tie goes to the attacker. To give it to the defender, change the 21 to 20 below. These calculations take the average damage and multiply by the probability of a hit (the first entry in sapply). The sapply statement ensures that each element is below 1 and, if it isn't, it will make the element =1.
+wp1eff <- h1*(sapply((21-ea+am1)/20, function(x) min(1,x)))  #Weapon 1 efficiency
+wp2eff <- h2*(sapply((21-ea+am2)/20, function(x) min(1,x)))  #Weapon 2 efficiency
 
 frame()  #Clear earlier graphs
 
-plot(wp1eff, type="o", col="blue", xlab="Enemy Armor Rating", ylab="Efficiency (Damage per Turn)",col.lab=rgb(0,0.5,0), ylim=c(min(wp1eff,wp2eff),max(wp1eff,wp2eff))); lines(wp2eff, type="o", pch=22, lty=2, col="red")
+plot(wp1eff, type="o",pch=21, col="blue", xlab="Enemy Armor Rating", ylab="Efficiency (Average Damage per Turn)",col.lab=rgb(0,0.5,0), ylim=c(min(wp1eff,wp2eff),max(wp1eff,wp2eff))); lines(wp2eff, type="o", pch=22, lty=2, col="red")
 
 legend("topright",c("Weapon 1 Efficiency","Weapon 2 Efficiency"), cex=0.8, col=c("blue","red"), pch=21:22, lty=1:2)
 #axis(1, at=2*0:10,)  #Add ticks on every one on the x axis
